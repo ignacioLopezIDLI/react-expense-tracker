@@ -1,8 +1,16 @@
-import React from 'react'
+import { GlobalProvider } from './context/GlobalState'
+import Header from './components/Header'
+import Balance from './components/Balance'
+import TransactionForm from './components/TransactionForm'
 
 function App() {
   return (
-    <div>Hello World React</div>
+    <GlobalProvider>
+      <Header/>
+      <Balance/>
+      <TransactionForm/>
+      <h1>Hello Wolrd</h1>
+    </GlobalProvider>
   )
 }
 
