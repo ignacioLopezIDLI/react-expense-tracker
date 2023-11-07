@@ -13,7 +13,7 @@ function TransactionForm() {
   addTransaction({  // Aca paso los valores de transaction 
     id: window.crypto.randomUUID(),
     description,
-    amount
+    amount: +amount
   })
   console.log(description,amount);
  }
