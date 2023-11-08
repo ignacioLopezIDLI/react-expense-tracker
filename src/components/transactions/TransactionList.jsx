@@ -6,7 +6,7 @@ function TransactionList() {
 
   return (
     <div className="">
-      <h3 className=" text-slate-300 text-xl font-bold w-full">Historial</h3>
+      <h3 className=" text-slate-300 text-xl font-bold w-full ">Historial</h3>
         <ul>
             {transactions.map(transaction => (
             <TransactionItems transaction = {transaction} 
