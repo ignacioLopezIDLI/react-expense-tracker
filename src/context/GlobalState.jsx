@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer , useEffect } from "react";
 import AppReducer from "./AppReducer";
 
 const initialState = {
@@ -16,7 +16,24 @@ export const useGlobalState = () => {
 
 // Se crea el componente GlobalProvider que acepta un children prop
 export const GlobalProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(AppReducer, initialState);
+  const [state, dispatch] = useReducer(AppReducer, initialState,
+    ()=> {
+      const localData =  localStorage.getItem("transactions")
+      return localData ? JSON.parse(localData) : initialState 
+    });
+
+    useEffect(()=>{
+      localStorage.setItem("transactions", JSON.stringify(state))
+    },[state])
+
+// state AppReducer -> Define operaciones 
+// initialState -> Inicializa el estado 
+// Funcion para inicilizar el estado Permite cambiar el valor 
+// Esta funcion Carga los datos del local si hay
+// useEffect cuando cambie estado guarda los cambios en el localStorage
+
+
+
 
   const addTransaction = (transaction) => {
     dispatch({
